@@ -11,8 +11,14 @@ const ButtonMax = styled.button`
   cursor: pointer;
   margin-right: 0.5rem;
   border: none;
+  /* border-radius: 0.5rem; */
   font-size: 1.5rem;
-  /* border-radius: 50%; */
+  &:hover {
+    cursor: pointer;
+    background-color: #ff9800;
+
+
+  }
 `
 // const ButtonMin = styled(ButtonMax)`
 //   background-color: #ffc762ab;
@@ -26,7 +32,7 @@ const MinMaxContainer = styled.div`
   border-radius: 1rem;
   max-width: 586px;
   margin: 0 auto;
-  box-shadow: -0.1rem -0.2rem 1rem 0rem #61809c;
+  box-shadow: 0rem 0rem 1rem 0rem #03a9f4;
   padding: 1rem;
 `
 const InstContainer = styled(MinMaxContainer)`
@@ -68,11 +74,11 @@ export default function ShowHide() {
             You may generate random birds many times when the game starts.
           </List>
           <List>
-            You may shuffle birds name on the card many times before the game
+            You may shuffle birds name on the cards many times before the game
             starts.
           </List>
           <List>
-            You may not able to shuffle the birds' names on the Cards once the
+            You may not be able to shuffle the birds' names on the Cards once the
             game starts.
           </List>
           <List>

@@ -14,7 +14,7 @@ const DivContainer = styled.div`
   display: grid;
   gap: 3.5rem;
   margin: 4rem auto;
-  padding: 1rem 0;
+  /* padding: 1rem 0; */
 `
 const HeaderOne = styled.h1`
   text-align: center;
@@ -46,24 +46,26 @@ const ShuffleBirdButton = styled(StartButton)``
 const CardsContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-padding: 0 1rem;
+  padding: 0 1rem;
 `
 
 const CardBody = styled.div`
   background-color: #e0ffff00;
   margin: 2rem auto;
   border-radius: 1.5rem;
-  box-shadow: -0.1rem -0.2rem 2rem 0 #61809c;
-  padding:1rem;
+  box-shadow: 0rem 0rem 1rem 0rem #03a9f4;
+  padding: 1rem;
 `
 
-const Card = styled.div`
+const Card = styled.ul`
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 0.5rem;
+  list-style-type: none;
+  padding: 0
 `
-const CardContents = styled.div`
-  padding: 1rem;
+const CardContents = styled.li`
+  padding: 1.5rem;
   font-size: 1rem;
   background-color: ${(props) =>
     props.birdMatched ? '#f7b048f2' : '#2f5f7040'};
@@ -112,7 +114,7 @@ function shuffleArray(array) {
 
 export default function App() {
   const [bird, setBird] = useState('')
-  const [birds, setBirds] = useState(Birds)
+  // const [Birds, setBirds] = useState(Birds)
   const [updatedBirdsPlayerOne, setUpdatedBirdsPlayerOne] = useState([])
   const [updatedBirdsPlayerTwo, setUpdatedBirdsPlayerTwo] = useState([])
   const [disable, setDisable] = useState(false)
@@ -125,23 +127,23 @@ export default function App() {
   useEffect(() => {
     randomBirdGeneratorPlayerOne()
     randomBirdGeneratorPlayerTwo()
-  },[])
+  }, [])
   //1 . Generate randomBirdHandler
 
   const randomBirdHandler = () => {
     //1.2 Not to repeat bird once appeared
-    const randomBird = birds[Math.floor(Math.random() * birds.length)]
+    const randomBird = Birds[Math.floor(Math.random() * Birds.length)]
     setBird(randomBird)
     // 1.2 Highlight Bird from cards when generated bird appears.
 
-    // 1.2.1 Clone birds of Player one
+    // 1.2.1 Clone Birds of Player one
     let updatedBirdClonePlayerOne = updatedBirdsPlayerOne.map((bird) => {
       if (bird === randomBird) {
         return `${bird}-matched!`
       }
       return bird
     })
-    // 1.2.2 Clone birds of Player two
+    // 1.2.2 Clone Birds of Player two
     let updatedBirdClonePlayerTwo = updatedBirdsPlayerTwo.map((bird) => {
       if (bird === randomBird) {
         return `${bird}-matched!`
@@ -156,8 +158,8 @@ export default function App() {
     for (let checkWinner of checkTemplate) {
       let isWinner = 0
       let isWinnerTwo = 0
-      let BingoBirdCounter = 0
 
+      let BingoBirdCounter = 0
       // let fourElementWinner= 0
       for (let checkMatchedBird of checkWinner) {
         // Player 1  winner matched Array
@@ -178,8 +180,10 @@ export default function App() {
           // console.log('isWinner', isWinner)
         }
         //4 Elements Winner
-
-        
+        if (newWinnerMatchedArray.includes('Bingo Bird')) {
+          BingoBirdCounter = BingoBirdCounter + 1
+          console.log('BingoBirdCounter', BingoBirdCounter)
+        }
 
         if (isWinner === 5) {
           setWinner('wins!')
@@ -209,11 +213,11 @@ export default function App() {
   //2. Generate Random Birds for cards
 
   const randomBirdGeneratorPlayerOne = () => {
-    const randomBirds = shuffleArray(birds)
+    const randomBirds = shuffleArray(Birds)
     setUpdatedBirdsPlayerOne(randomBirds)
   }
   const randomBirdGeneratorPlayerTwo = () => {
-    const randomBirds = shuffleArray(birds)
+    const randomBirds = shuffleArray(Birds)
     setUpdatedBirdsPlayerTwo(randomBirds)
   }
 
@@ -231,6 +235,7 @@ export default function App() {
   return (
     <DivContainer>
       <ShowHide />
+
       <HeaderOne>Let's Bingo Bird!!!</HeaderOne>
       <HeaderTwo>{`The generated bird is : ${bird}`}</HeaderTwo>
       <ButtonsDiv>
