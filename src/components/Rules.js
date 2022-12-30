@@ -71,7 +71,7 @@ export default function ShowHide() {
         <HeadOne>Rules and Instructions!</HeadOne>
         <UnOrderedlist>
           <List>
-            You may generate random birds many times when the game starts.
+            You may generate random birds many times during playing the game.
           </List>
           <List>
             You may shuffle birds name on the cards many times before the game
