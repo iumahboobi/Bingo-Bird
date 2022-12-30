@@ -62,7 +62,7 @@ const Card = styled.ul`
   grid-template-columns: repeat(5, 1fr);
   gap: 0.5rem;
   list-style-type: none;
-  padding: 0
+  padding: 0;
 `
 const CardContents = styled.li`
   padding: 1.5rem;
