@@ -24,7 +24,7 @@ const HeaderTwo = styled(HeaderOne)`
 `
 const Button = styled.button`
   padding: 1rem 2rem;
-  font-size:1.6rem;
+  font-size:1.4rem;
   background-color: #b3d8e6;
   border: none;
   margin: 0 1rem;
