@@ -12,8 +12,7 @@ import Credits from './components/Credits'
 const DivContainer = styled.div`
   background-color: black;
   display: grid;
-  gap: 3.5rem;
-  margin: 4rem auto;
+  margin: 2rem auto;
   /* padding: 1rem 0; */
 `
 const HeaderOne = styled.h1`
