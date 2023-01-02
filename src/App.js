@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { useState, useEffect } from 'react'
 // import './App.css'
-import Birds from './seed/birds'
-import winningTemplate from './seed/winning.template.js'
+import Birds from './data/birds'
+import winningTemplate from './data/winning.template.js'
 import ShowHide from './components/Rules'
 import Credits from './components/Credits'
 
@@ -24,7 +24,7 @@ const HeaderTwo = styled(HeaderOne)`
 `
 const Button = styled.button`
   padding: 1rem 2rem;
-  font-size:1.4rem;
+  font-size: 1.4rem;
   background-color: #b3d8e6;
   border: none;
   margin: 0 1rem;
@@ -67,6 +67,7 @@ const Card = styled.ul`
 const CardContents = styled.li`
   padding: 1.5rem;
   font-size: 1rem;
+  transition-duration: ${(props) => (props.birdMatched ? '0s' : '1s')};
   background-color: ${(props) =>
     props.birdMatched ? '#f7b048f2' : '#2f5f7040'};
   color: ${(props) => (props.birdMatched ? 'black' : 'white')};
@@ -154,50 +155,46 @@ export default function App() {
     //1.3.1 Winner Decider
 
     let checkTemplate = Object.values(winningTemplate)
-
+    
     for (let checkWinner of checkTemplate) {
+      let BingoBirdCounter = 0
       let isWinner = 0
       let isWinnerTwo = 0
-
-      let BingoBirdCounter = 0
-      // let fourElementWinner= 0
+      let bingoArray = []
       for (let checkMatchedBird of checkWinner) {
-        // Player 1  winner matched Array
+        // Player 1  winner matched
 
-        const newWinnerMatchedArray =
-          updatedBirdClonePlayerOne[checkMatchedBird]
+        const newWinnerMatched = updatedBirdClonePlayerOne[checkMatchedBird]
 
-        //Player 2 winner matched array
-        const newWinnerMatchedArrayTwo =
-          updatedBirdClonePlayerTwo[checkMatchedBird]
-
-        console.log('newWinnerMatchedArray', newWinnerMatchedArray)
+        // console.log('newWinnerMatched', newWinnerMatched)
         //Player 1
 
-        if (newWinnerMatchedArray.includes('match')) {
+        if (newWinnerMatched.includes('match')) {
           isWinner = isWinner + 1
-          // fourElementWinner = fourElementWinner+1
           // console.log('isWinner', isWinner)
         }
-        //4 Elements Winner
-        if (newWinnerMatchedArray.includes('Bingo Bird')) {
-          BingoBirdCounter = BingoBirdCounter + 1
-          console.log('BingoBirdCounter', BingoBirdCounter)
-        }
-
         if (isWinner === 5) {
           setWinner('wins!')
           setEnable(true)
           setStartBtnState(false)
         }
 
-        //Player 2
-
-        if (newWinnerMatchedArrayTwo.includes('match')) {
-          isWinnerTwo = isWinnerTwo + 1
-          // console.log('isWinner', isWinner)
+        // console.log('newWinnerMatchedincludes',newWinnerMatched.includes('Bingo Bird'))
+        if (newWinnerMatched.includes('Bingo Bird')) {
+          BingoBirdCounter = BingoBirdCounter + 1
+          console.log('BingoBirdCounter',BingoBirdCounter)
+        }
+        if (BingoBirdCounter === 4) {
+          setWinner('Wins')
         }
 
+        //Player 2
+        //Player 2 winner matched
+        const newWinnerMatchedTwo = updatedBirdClonePlayerTwo[checkMatchedBird]
+        if (newWinnerMatchedTwo.includes('match')) {
+          isWinnerTwo = isWinnerTwo + 1
+          // console.log('isWinnerTwo', isWinnerTwo)
+        }
         if (isWinnerTwo === 5) {
           setWinnerTwo('wins!')
           setEnable(true)
@@ -243,7 +240,7 @@ export default function App() {
           Generate Bird
         </Button>
         <StartButton disabled={startBtnState} onClick={startGameHandler}>
-          Game Start
+          Start Game
         </StartButton>
       </ButtonsDiv>
       <CardsContainer>
