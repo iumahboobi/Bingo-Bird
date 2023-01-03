@@ -2,7 +2,7 @@
 
 ### Create A bingo game by clicking the button and `show Birds`.
 
-- When clicking the button, one random bird will appear on our screen. there are 24 different birds and one free slot on the middle called Bingo Bird
+- When clicking the button, one random bird will appear on our screen. there are 24 different birds and one free slot on the middle called Bingo Bird which never changes.
 - If the generated random bird appears and the name is also available in our card then it `matches`
 - You can shuffle the cards many times before the `game starts`.
 - Either player or both player will win, if all the birds on the row column or diagonal `matches`

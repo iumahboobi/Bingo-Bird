@@ -7,7 +7,7 @@ const ShowHideButtons = styled.div`
   justify-content: flex-end;
 `
 const ButtonMax = styled.button`
-  background-color: #9c27b0;
+  background-color: #c431de;
   cursor: pointer;
   margin-right: 0.5rem;
   border: none;
@@ -16,8 +16,6 @@ const ButtonMax = styled.button`
   &:hover {
     cursor: pointer;
     background-color: #ff9800;
-
-
   }
 `
 // const ButtonMin = styled(ButtonMax)`
@@ -66,31 +64,32 @@ export default function ShowHide() {
         </ShowHideButtons>
       </MinMaxContainer>
 
-      {isShown &&
-      <InstContainer>
-        <HeadOne>Rules and Instructions!</HeadOne>
-        <UnOrderedlist>
-          <List>
-            You may generate random birds many times during playing the game.
-          </List>
-          <List>
-            You may shuffle birds name on the cards many times before the game
-            starts.
-          </List>
-          <List>
-            You may not be able to shuffle the birds' names on the Cards once the
-            game starts.
-          </List>
-          <List>
-            The name of the birds will be highlighted on the card only once when
-            match is found.
-          </List>
-          <List>
-            Either player or both players win the game by completing a row,
-            column, or diagonal.
-          </List>
-        </UnOrderedlist>
-      </InstContainer>}
+      {isShown && (
+        <InstContainer>
+          <HeadOne>Rules and Instructions!</HeadOne>
+          <UnOrderedlist>
+            <List>
+              You may generate random birds many times during playing the game.
+            </List>
+            <List>
+              You may shuffle birds name on the cards many times before the game
+              starts.
+            </List>
+            <List>
+              You may not be able to shuffle the birds' names on the Cards once
+              the game starts.
+            </List>
+            <List>
+              The name of the birds will be highlighted on the card only once
+              when match is found.
+            </List>
+            <List>
+              Either player or both players win the game by completing a row,
+              column, or diagonal.
+            </List>
+          </UnOrderedlist>
+        </InstContainer>
+      )}
     </div>
   )
 }
