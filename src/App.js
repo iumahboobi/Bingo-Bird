@@ -14,6 +14,11 @@ const DivContainer = styled.div`
   display: grid;
   margin: 2rem auto;
   /* padding: 1rem 0; */
+  @media (max-width:414px){
+    max-width: 90%;
+  }
+
+
 `
 const HeaderOne = styled.h1`
   text-align: center;
@@ -67,7 +72,7 @@ const Card = styled.ul`
 const CardContents = styled.li`
   padding: 1.5rem;
   font-size: 1rem;
-  transition-duration: ${(props) => (props.birdMatched ? '0s' : '1s')};
+  /* transition-duration: ${(props) => (props.birdMatched ? '0s' : '1s')}; */
   background-color: ${(props) =>
     props.birdMatched ? '#f7b048f2' : '#2f5f7040'};
   color: ${(props) => (props.birdMatched ? 'black' : 'white')};
@@ -144,15 +149,15 @@ export default function App() {
     const updatedBirdClonePlayerTwo = birdClones(updatedBirdsPlayerTwo)
 
     //1.3.1 Winner Decider
-    for (let checkWinner of winningTemplate) {
+    for (let templates of winningTemplate) {
       let isWinner = 0
       let isWinnerTwo = 0
-      for (let checkMatchedBird of checkWinner) {
+      for (let eachEle of templates) {
         // Player 1  winner matched
-
-        const newWinnerMatched = updatedBirdClonePlayerOne[checkMatchedBird]
+        console.log('eachEle',eachEle)
+        const winnerMatched = updatedBirdClonePlayerOne[eachEle]
         //Player 1
-        if (newWinnerMatched.includes('match')) {
+        if (winnerMatched.includes('match')) {
           isWinner = isWinner + 1
           // console.log('isWinner', isWinner)
         }
@@ -164,8 +169,8 @@ export default function App() {
 
         //Player 2
         //Player 2 winner matched
-        const newWinnerMatchedTwo = updatedBirdClonePlayerTwo[checkMatchedBird]
-        if (newWinnerMatchedTwo.includes('match')) {
+        const winnerMatchedTwo = updatedBirdClonePlayerTwo[eachEle]
+        if (winnerMatchedTwo.includes('match')) {
           isWinnerTwo = isWinnerTwo + 1
         }
         if (isWinnerTwo === 5) {
