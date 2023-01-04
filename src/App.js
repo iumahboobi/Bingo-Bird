@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { useState, useEffect } from 'react'
-// import './App.css'
 import Birds from './data/birds'
 import winningTemplate from './data/winning.template.js'
 import ShowHide from './components/Rules'
@@ -13,16 +12,6 @@ const DivContainer = styled.div`
   background-color: black;
   display: grid;
   margin: 2rem auto;
-  /* padding: 1rem 0; */
-  @media (max-width:700px){
-  
-    margin:0.5rem auto;
-    display: grid-column;
-    background-color:red
-
-  }
-
-
 `
 const HeaderOne = styled.h1`
   text-align: center;
@@ -76,7 +65,6 @@ const Card = styled.ul`
 const CardContents = styled.li`
   padding: 1.5rem;
   font-size: 1rem;
-  /* transition-duration: ${(props) => (props.birdMatched ? '0s' : '1s')}; */
   background-color: ${(props) =>
     props.birdMatched ? '#f7b048f2' : '#2f5f7040'};
   color: ${(props) => (props.birdMatched ? 'black' : 'white')};
@@ -158,12 +146,11 @@ export default function App() {
       let isWinnerTwo = 0
       for (let eachEle of templates) {
         // Player 1  winner matched
-        console.log('eachEle',eachEle)
+        console.log('eachEle', eachEle)
         const winnerMatched = updatedBirdClonePlayerOne[eachEle]
         //Player 1
         if (winnerMatched.includes('match')) {
           isWinner = isWinner + 1
-          // console.log('isWinner', isWinner)
         }
         if (isWinner === 5) {
           setWinner('wins!')
@@ -189,7 +176,7 @@ export default function App() {
     setUpdatedBirdsPlayerTwo(updatedBirdClonePlayerTwo)
   }
 
-  //2. Generate Random Birds for cards
+  //2. Generate Random Birds for cards (Shuffles)
 
   const randomBirdGeneratorPlayerOne = () => {
     const randomBirds = shuffleArray(Birds)
