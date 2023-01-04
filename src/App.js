@@ -14,8 +14,8 @@ const DivContainer = styled.div`
   display: grid;
   margin: 2rem auto;
   /* padding: 1rem 0; */
-  @media (max-width:414px){
-    max-width: 90%;
+  @media (max-width:700px){
+    max-width: 350px
   }
 
 
