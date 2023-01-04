@@ -1,6 +1,6 @@
 # Bingo Bird
 
-![exmple image](src/assets/bingo_bird_vdo.gif)
+![example image](src/assets/bingo_bird_vdo.gif)
 ### Create A bingo game by clicking the button and `show Birds`.
 
 - When clicking the button, one random bird will appear on our screen. there are 24 different birds and one free slot on the middle called Bingo Bird which never changes.
